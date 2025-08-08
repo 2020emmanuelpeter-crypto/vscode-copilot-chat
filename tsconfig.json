@@ -1,38 +1,58 @@
 {
-	"extends": "./tsconfig.base.json",
-	"compilerOptions": {
-		"jsx": "react",
-		"jsxFactory": "vscpp",
-		"jsxFragmentFactory": "vscppf",
-		"rootDir": ".",
-		"types": [
-			"minimist",
-			"mocha",
-			"node",
-			"picomatch",
-			"sinon",
-			"tar",
-			"vscode"
-		],
-		// Needed for tsx to run test files
-		"paths": {
-			"vscode": ["./src/util/common/test/shims/vscodeTypesShim.ts"]
-		}
-	},
-	"include": [
-		"vscodeTypes.ts",
-		"src",
-		"test",
-		".vscode/extensions/test-extension"
-	],
-	"exclude": [
-		"test/scenarios/**/*",
-		"test/simulation/fixtures/**/*",
-		"test/simulation/workbench/**/*",
-		"src/platform/parser/test/node/fixtures/**/*",
-		"src/extension/test/node/fixtures/**/*",
-		"src/extension/prompts/node/test/fixtures/**/*",
-		"src/extension/typescriptContext/serverPlugin/fixtures/**",
-		"test/aml/out"
-	]
-}
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    // Use React JSX emit mode
+    "jsx": "react",
+
+    // Custom JSX factory functions
+    "jsxFactory": "vscpp",
+    "jsxFragmentFactory": "vscppf",
+
+    // Root directory of input files
+    "rootDir": ".",
+
+    // Include all relevant typings
+    "types": [
+      "minimist",
+      "mocha",
+      "node",
+      "picomatch",
+      "sinon",
+      "tar",
+      "vscode"
+    ],
+
+    // Paths alias for vscode typings shim (helps with tests)
+    "paths": {
+      "vscode": ["./src/util/common/test/shims/vscodeTypesShim.ts"]
+    },
+
+    // Enable strict type-checking options for safer code (optional but recommended)
+    "strict": true,
+
+    // Enable source maps for easier debugging (optional)
+    "sourceMap": true,
+
+    // Target ES2019 or later for better modern features (adjust if needed)
+    "target": "ES2019",
+
+    // Module system, usually "commonjs" or "esnext" depending on your build system
+    "module": "commonjs"
+  },
+  "include": [
+    "vscodeTypes.ts",
+    "src",
+    "test",
+    ".vscode/extensions/test-extension"
+  ],
+  "exclude": [
+    "test/scenarios/**/*",
+    "test/simulation/fixtures/**/*",
+    "test/simulation/workbench/**/*",
+    "src/platform/parser/test/node/fixtures/**/*",
+    "src/extension/test/node/fixtures/**/*",
+    "src/extension/prompts/node/test/fixtures/**/*",
+    "src/extension/typescriptContext/serverPlugin/fixtures/**",
+    "test/aml/out"
+  ]
+  }
