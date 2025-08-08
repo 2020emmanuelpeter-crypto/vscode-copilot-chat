@@ -1,38 +1,84 @@
 {
-	"extends": "./tsconfig.base.json",
-	"compilerOptions": {
-		"jsx": "react",
-		"jsxFactory": "vscpp",
-		"jsxFragmentFactory": "vscppf",
-		"rootDir": ".",
-		"types": [
-			"minimist",
-			"mocha",
-			"node",
-			"picomatch",
-			"sinon",
-			"tar",
-			"vscode"
-		],
-		// Needed for tsx to run test files
-		"paths": {
-			"vscode": ["./src/util/common/test/shims/vscodeTypesShim.ts"]
-		}
-	},
-	"include": [
-		"vscodeTypes.ts",
-		"src",
-		"test",
-		".vscode/extensions/test-extension"
-	],
-	"exclude": [
-		"test/scenarios/**/*",
-		"test/simulation/fixtures/**/*",
-		"test/simulation/workbench/**/*",
-		"src/platform/parser/test/node/fixtures/**/*",
-		"src/extension/test/node/fixtures/**/*",
-		"src/extension/prompts/node/test/fixtures/**/*",
-		"src/extension/typescriptContext/serverPlugin/fixtures/**",
-		"test/aml/out"
-	]
-}
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    // Specify ECMAScript target version for emitted JavaScript
+    "target": "ES2020",
+
+    // Specify module code generation method — adapt if your bundler needs another
+    "module": "ESNext",
+
+    // JSX support for React with custom factories
+    "jsx": "react",
+    "jsxFactory": "vscpp",
+    "jsxFragmentFactory": "vscppf",
+
+    // Root directory of input files
+    "rootDir": ".",
+
+    // Output directory (good to separate output from source)
+    "outDir": "./dist",
+
+    // Enable all strict type-checking options
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    // Module interoperability
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Enable source maps for debugging
+    "sourceMap": true,
+
+    // Resolve JSON imports
+    "resolveJsonModule": true,
+
+    // Support importHelpers to reduce bundle size with tslib
+    "importHelpers": true,
+
+    // Skip type checking of declaration files for speed
+    "skipLibCheck": true,
+
+    // Control how modules are resolved
+    "moduleResolution": "node",
+
+    // Include type definitions here
+    "types": [
+      "minimist",
+      "mocha",
+      "node",
+      "picomatch",
+      "sinon",
+      "tar",
+      "vscode"
+    ],
+
+    // Path mapping for vscode shim (your custom)
+    "paths": {
+      "vscode": ["./src/util/common/test/shims/vscodeTypesShim.ts"]
+    }
+  },
+
+  "include": [
+    "vscodeTypes.ts",
+    "src",
+    "test",
+    ".vscode/extensions/test-extension"
+  ],
+
+  "exclude": [
+    "test/scenarios/**/*",
+    "test/simulation/fixtures/**/*",
+    "test/simulation/workbench/**/*",
+    "src/platform/parser/test/node/fixtures/**/*",
+    "src/extension/test/node/fixtures/**/*",
+    "src/extension/prompts/node/test/fixtures/**/*",
+    "src/extension/typescriptContext/serverPlugin/fixtures/**",
+    "test/aml/out"
+  ]
+  }
